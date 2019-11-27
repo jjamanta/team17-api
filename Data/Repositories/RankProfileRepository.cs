@@ -29,7 +29,6 @@ namespace Team17.Data.Repositories
 			_ReturnProc ret = ExecuteTuple("RankProfileSave", new object[] {
 					new SqlParameter("ProfileId", objRankProfile.ProfileId),
 					new SqlParameter("QuestionOptionId", objRankProfile.QuestionOptionId),
-					new SqlParameter("ProfileId", objRankProfile.ProfileId),
 					new SqlParameter("PersonId", this.PersonId)
 			});
 

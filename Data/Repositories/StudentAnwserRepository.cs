@@ -24,12 +24,12 @@ namespace Team17.Data.Repositories
 					new SqlParameter("QuestionOptionId", questionOptionId)
 			}).FirstOrDefault();
 		}
+
 		public StudentAnwser Save(StudentAnwser objStudentAnwser)
 		{
 			_ReturnProc ret = ExecuteTuple("StudentAnwserSave", new object[] {
 					new SqlParameter("QuestionOptionId", objStudentAnwser.QuestionOptionId),
 					new SqlParameter("StudentId", objStudentAnwser.StudentId),
-					new SqlParameter("QuestionOptionId", objStudentAnwser.QuestionOptionId),
 					new SqlParameter("PersonId", this.PersonId)
 			});
 
@@ -45,6 +45,7 @@ namespace Team17.Data.Repositories
 					new SqlParameter("StudentAnwserId", ret.GetValue())
 			}).FirstOrDefault();
 		}
+
 		public _ReturnProc Delete(int questionOptionId)
 		{
 			return ExecuteTuple("StudentAnwserDelete", new object[] {
