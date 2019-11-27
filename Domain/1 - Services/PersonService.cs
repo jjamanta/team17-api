@@ -26,10 +26,8 @@ namespace Team17.Domain.Services
             m_AppSettings = appSettings.Value;
         }
 
-
         public Person Authenticate(string email, string password)
         {
-            User user = new User();
             Person person = m_PersonRepository.Authenticate(email, password);
 
             // return null if user not found
@@ -38,13 +36,15 @@ namespace Team17.Domain.Services
                 return null;
             }
 
-            user.AddressId = person.AddressId;
-            user.BirthDate = person.BirthDate;
-            //user.Director = per
-            user.Email = person.Email;
-            user.FirstName = person.FirstName;
-            user.LastName = person.LastName;
-            user.PersonId = person.PersonId;
+            User user = new User
+            {
+                AddressId = person.AddressId,
+                BirthDate = person.BirthDate,
+                Email = person.Email,
+                FirstName = person.FirstName,
+                LastName = person.LastName,
+                PersonId = person.PersonId
+            };
     
             // authentication successful so generate jwt token
             var tokenHandler = new JwtSecurityTokenHandler();
